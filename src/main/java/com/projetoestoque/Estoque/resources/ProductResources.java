@@ -24,13 +24,15 @@ public class ProductResources {
 		 
 		Product p = null;
 		try {
-			p = new Product("Ginseg", Category.SUPLEMENTO, 90, 1, sdf.parse("18/02/2025"));
+			p = new Product(null, "Ginseg", Category.SUPLEMENTO, 90, 1, sdf.parse("18/02/2025"));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		return ResponseEntity.ok().body(p);
 	}
 	
+	
+	// Endpoint para inserir produtos
 	
 	
 	
