@@ -26,9 +26,24 @@ public class ProductService {
 		return repository.save(obj);
 	}
 	
+	// Método para deletar produtos
+	public void delete(Long id) {
+	    repository.deleteById(id);
+	}
 	
-
+	// Método para atualizar produtos
+	public Product update(Long id, Product obj) {
+		Product newObj = repository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+		updateData(newObj, obj);
+		return repository.save(newObj);
+	}
 	
-	
-
+	private void updateData(Product newObj, Product obj) {
+		newObj.setName(obj.getName());
+		newObj.setCategory(obj.getCategory());
+		newObj.setTotal(obj.getTotal());
+		newObj.setQuantityPerDay(obj.getQuantityPerDay());
+		newObj.setStart(obj.getStart());
+	}
 }
