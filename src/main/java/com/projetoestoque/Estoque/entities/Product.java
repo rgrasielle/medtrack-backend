@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.projetoestoque.Estoque.enums.Category;
 
 import jakarta.persistence.Entity;
@@ -12,6 +15,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -31,12 +36,19 @@ public class Product implements Serializable {
 	
 	private Integer total;
 	private Integer quantityPerDay;
+	
+	@JsonFormat(pattern = "dd-MM-yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy") 
 	private Date start;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 	
 	public Product() {
 	}
 
-	public Product(Long id, String name, Category category, Integer total, Integer quantityPerDay, Date start) {
+	public Product(Long id, String name, Category category, Integer total, Integer quantityPerDay, Date start, User user) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -44,6 +56,7 @@ public class Product implements Serializable {
 		this.total = total;
 		this.quantityPerDay = quantityPerDay;
 		this.start = start;
+		this.user = user;
 	}
 	
 	public Long getId() {
@@ -93,6 +106,14 @@ public class Product implements Serializable {
 	public void setStart(Date start) {
 		this.start = start;
 	}
+	
+	public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
 	@Override
 	public int hashCode() {

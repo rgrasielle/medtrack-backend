@@ -30,8 +30,8 @@ public class ProductResource {
 	// Endpoint para acessar os produtos
 	
 	@GetMapping
-	public ResponseEntity<List<Product>> findAll() {
-		List<Product> list = service.findAll();
+	public ResponseEntity<List<Product>> findAllByUser() {
+		List<Product> list = service.findAllByUser();
 		return ResponseEntity.ok().body(list);
 	}
 
