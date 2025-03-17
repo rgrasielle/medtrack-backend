@@ -29,17 +29,28 @@ public class SecurityFilter extends OncePerRequestFilter {
 	// Recupera as informações do token
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-			throws ServletException, IOException {
-		var token = this.recoverToken(request);
-		if (token != null) {
-			var email = tokenService.validateToken(token);
-			UserDetails user = userRepository.findByEmail(email);
-			
-			var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
-			SecurityContextHolder.getContext().setAuthentication(authentication);		
-		}
-		filterChain.doFilter(request, response);  // chama o próximo filtro
+	        throws ServletException, IOException {
+	    
+	    String token = recoverToken(request);
+
+	    if (token != null) {
+	        String email = tokenService.validateToken(token);
+
+	        if (email != null) { // Verifica se o token é válido
+	            UserDetails user = userRepository.findByEmail(email);
+
+	            if (user != null) { // Verifica se o usuário existe
+	                UsernamePasswordAuthenticationToken authentication =
+	                        new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+	                
+	                SecurityContextHolder.getContext().setAuthentication(authentication);
+	            }
+	        }
+	    }
+
+	    filterChain.doFilter(request, response); // Chama o próximo filtro
 	}
+
 	
 	private String recoverToken(HttpServletRequest request) {
 		var authHeader = request.getHeader("Authorization");

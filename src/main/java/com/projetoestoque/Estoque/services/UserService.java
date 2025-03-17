@@ -58,9 +58,13 @@ public class UserService {
 		newObj.setPassword(obj.getPassword());
 	}
 	
-
 	// Verificar se o email existe
 	public boolean emailExists(String email) {
         return repository.existsByEmail(email);
+    }
+	
+	// Método para encontrar usuário por email
+    public User findByEmail(String email) {
+        return repository.findByEmail(email); // Delegando para o repositório
     }
 }

@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,6 +61,15 @@ public class UserResource {
 	    response.put("exists", exists);
 	    return ResponseEntity.ok(response);
 	}
+	
+	// Método para retornar as informações do usuário autenticado
+    @GetMapping("/me")
+    public ResponseEntity<User> getCurrentUser(@AuthenticationPrincipal User principal) {
+        // Busca o usuário a partir do principal (que é o usuário autenticado)
+        User user = service.findByEmail(principal.getUsername());  // ou principal.getName()
+        return ResponseEntity.ok(user);
+    }
+	
 
 }
  
