@@ -22,7 +22,6 @@ import com.projetoestoque.Estoque.entities.Product;
 import com.projetoestoque.Estoque.services.ProductService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping(value = "/products")
 public class ProductResource { 
 	

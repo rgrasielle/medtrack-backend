@@ -23,7 +23,6 @@ import com.projetoestoque.Estoque.services.UserService;
 import jakarta.validation.Valid;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping(value = "/auth")
 public class Authentication {
 	

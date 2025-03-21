@@ -23,7 +23,6 @@ import com.projetoestoque.Estoque.entities.User;
 import com.projetoestoque.Estoque.services.UserService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping(value = "/users")
 public class UserResource { 
 	
