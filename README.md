@@ -119,9 +119,9 @@ Além de resolver meu problema, aproveitei para colocar em prática tudo o que a
 
 ## 📸 Demonstração
 
-> ![Estoque](https://github.com/user-attachments/assets/65d8bdf1-8641-46c3-85c4-18a0b255cbb6)
-> ![Home](https://github.com/user-attachments/assets/c62a4389-699a-4775-9a9e-badb5cd745b8)
-> ![Cadastro](https://github.com/user-attachments/assets/37e90ed5-2105-495c-9d6e-b0cf77e930db)
+![Estoque](https://github.com/user-attachments/assets/65d8bdf1-8641-46c3-85c4-18a0b255cbb6)
+![Home](https://github.com/user-attachments/assets/c62a4389-699a-4775-9a9e-badb5cd745b8)
+![Cadastro](https://github.com/user-attachments/assets/37e90ed5-2105-495c-9d6e-b0cf77e930db)
 
 ---
 
